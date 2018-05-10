@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>MVVM</title>
+</head>
+<body>
+	<div id="app">
+		<table border="1">
+			<tr v-for="row in data">
+				<td v-for="(col,colIndex) in row" :style="{'color':isMax(col,colIndex) ?'red':'black'}">{{col}}</td>
+			</tr>
+		</table>
+		<select v-model="selctOne">
+			<option value="">未选择</option>
+			<option v-for="(select,index) in selects" :value="index" :disabled="selctTwo === index || selctThree === index">{{select}}</option>
+		</select>
+		<select v-model="selctTwo">
+			<option value="">未选择</option>
+			<option v-for="(select,index) in selects" :value="index" :disabled="selctOne === index || selctThree === index">{{select}}</option>
+		</select>
+		<select v-model="selctThree">
+			<option value="">未选择</option>
+			<option v-for="(select,index) in selects" :value="index" :disabled="selctOne === index || selctTwo === index">{{select}}</option>
+		</select>
+	</div>
+	<script src="..\node_modules\vue\dist\vue.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>
